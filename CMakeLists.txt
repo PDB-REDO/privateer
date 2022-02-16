@@ -77,6 +77,7 @@ find_package(CCP4 REQUIRED ccp4c clipper-core clipper-ccp4 clipper-contrib clipp
 find_package(Python REQUIRED COMPONENTS Development Interpreter)
 find_library(MMDB2 NAMES mmdb2 REQUIRED)
 find_library(CCP4SRS NAMES ccp4srs REQUIRED)
+find_PATH(CCP4SRS_INCLUDE_DIR ccp4srs/ccp4srs_manager.h REQUIRED)
 
 set(CMAKE_THREAD_PREFER_PTHREAD)
 set(THREADS_PREFER_PTHREAD_FLAG ON)
@@ -130,6 +131,7 @@ target_include_directories(privateer-lib
 	"$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>"
 	${CCP4_INCLUDE_DIRS}
 	${Python_INCLUDE_DIRS}
+	${CCP4SRS_INCLUDE_DIR}
 	PRIVATE
 	${PYBIND11_INCLUDE_DIR})
 
@@ -175,7 +177,7 @@ install(EXPORT privateerTargets
 
 install(
 	FILES ${PRIVATEER_LIBRARY_HEADERS} "${CMAKE_CURRENT_BINARY_DIR}/privateer-lib/privateer-export.hpp"
-	DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/privateer-lib/
+	DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/privateer/
 	COMPONENT Devel
 )
 

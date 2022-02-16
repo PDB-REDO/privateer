@@ -9,6 +9,9 @@
 
 #include "privateer-lib.h"
 
+#include <ccp4srs/ccp4srs_manager.h>
+#include <ccp4srs/ccp4srs_defs.h>
+
 void privateer::coot::insert_coot_prologue_scheme ( std::fstream& output )
 {
     output  << "; This script has been created by Privateer (Agirre, Iglesias, Rovira, Davies, Wilson and Cowtan, 2013-17)\n"
